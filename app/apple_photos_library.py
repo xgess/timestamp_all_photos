@@ -25,7 +25,7 @@ def dump_image_paths(photos_library_path, destination_filepath, limit=None):
     db_cursor.execute(query)
 
     # dump the full image paths to the destination_filepath
-    photo_file_basepath = os.path.join(photos_library_path, SUBPATH_TO_PHOTOS)
+    photo_file_basepath = os.path.join(photos_library_path, SUBPATH_TO_PHOTOS).replace('\ ', ' ')
     with open(destination_filepath, 'w') as f:
         for query_result in db_cursor:
             f.write(os.path.join(photo_file_basepath, query_result[0]) + '\n')
