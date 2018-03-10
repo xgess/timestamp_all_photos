@@ -3,8 +3,12 @@
 .coverage
 .cache
 .env
-.python-version
+.pytest_cache/
 /tmp
+/tests/tmp
 test-results/
 .ipynb_checkpoints/
 .cache/
+**/.DS_Store
+timestamp_all_photos.egg-info/**
+todo.txt

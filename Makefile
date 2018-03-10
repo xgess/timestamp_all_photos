@@ -3,13 +3,14 @@
 default: test
 
 build-test:
-	@pip install --no-cache-dir -r requirements-dev.txt
+	@pipenv install --dev
 
 build:
-	@pip install --no-cache-dir -r requirements.txt
+	@pipenv install
 
 clean: ## Remove artifacts
 	@find . -name "*.pyc" -delete
+	@find . -name "*.pytest_cache" -delete
 	@find . -name "*.pyo" -delete
 	@find . -name '*~' -exec rm -f {} +
 	@find . -name '__pycache__' -exec rm -fr {} +

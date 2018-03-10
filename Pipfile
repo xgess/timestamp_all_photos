@@ -1,0 +1,25 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[packages]
+
+click = "*"
+
+
+[dev-packages]
+
+pytest = "*"
+pyflakes = "*"
+ipython = "*"
+"e1839a8" = {path = ".", editable = true}
+pluggy = "*"
+pytest-flakes = "*"
+
+
+[requires]
+
+python_version = "3.6"
