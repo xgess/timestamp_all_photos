@@ -8,6 +8,7 @@
 /tests/tmp
 test-results/
 .ipynb_checkpoints/
+.mypy_cache/
 .cache/
 **/.DS_Store
 timestamp_all_photos.egg-info/**

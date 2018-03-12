@@ -19,4 +19,4 @@ clean: ## Remove artifacts
 	@rm -rf test-results
 
 test: build-test clean ## Run tests
-	py.test --flakes
+	mypy app && py.test --flakes
