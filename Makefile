@@ -19,4 +19,4 @@ clean: ## Remove artifacts
 	@rm -rf test-results
 
 test: build-test clean ## Run tests
-	mypy app && py.test --flakes
+	mypy app --ignore-missing-imports && py.test --flakes

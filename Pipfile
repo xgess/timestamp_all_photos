@@ -8,7 +8,7 @@ name = "pypi"
 [packages]
 
 click = "*"
-hippiehug = "*"
+btctxstore = {git = "git@github.com:xgess/btctxstore.git", editable = true, ref = "pin-pycoin"}
 
 
 [dev-packages]
@@ -16,7 +16,6 @@ hippiehug = "*"
 pytest = "*"
 pyflakes = "*"
 ipython = "*"
-"e1839a8" = {path = ".", editable = true}
 pluggy = "*"
 pytest-flakes = "*"
 ipdb = "*"

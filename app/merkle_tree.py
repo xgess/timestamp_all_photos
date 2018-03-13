@@ -57,7 +57,7 @@ class MerkleTree:
 
 
     @classmethod
-    def from_filestream(cls, input_filestream) -> MerkleTree:
+    def from_filestream(cls, input_filestream):
         file_contents = input_filestream.readlines()
         items = [pic_hash.rstrip() for pic_hash in file_contents]
         return cls(items)
@@ -106,7 +106,7 @@ class MerkleTree:
         return (index - gen_start) // 2 + gen_end + 1
 
 
-    def proof(self, file_path) -> MerkleProof:
+    def proof(self, file_path) -> Union[MerkleProof, bool]:
         element_hash = hash_from_path(file_path)
         try:
             element_index = self.data.index(element_hash)
