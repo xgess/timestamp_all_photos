@@ -9,21 +9,17 @@ Ostensibly so you can prove later that you have an undoctored photo that's been 
 ### RUN IT
 First things first, you need to install this into a local Python3.6 environment. I'm loving on pipenv right now, so use that! Or whatever you want.
 
-There's a bunch of shell commands under `timestamper`. If you're feeling really brave (and I don't think I'd recommend that), you can do the whole shebang in a single go:
+There's a bunch of shell commands under `timestamper`. I tried to make lots of sensible defaults (e.g. that your Apple photos library is at `/Users/<yourusername>/Pictures/Photos Library.photoslibrary`. If you're feeling really brave (and I don't think I'd recommend that), you can do the whole shebang in a single go:
 
 ```shell
-timestamper end_to_end \
-    --library=/Users/<yourname>/Pictures/Photos Library.photoslibrary \
-    --change_address=<an address you control> \
-    --live \
-    --mainnet
+timestamper end_to_end --change_address=<an address you control> --live --mainnet
 ```
 You'll be prompted for your private key in Wallet-Import-Format (with your typing hidden) to lookup your UTXOs and to sign the transaction.
 
 You can also do it in a few steps to watch the process and inspect the temporary files (saved in ./tmp).
 1. Inspect your photos library to get a list of all of the photo files to include in the merkle tree.
 ```shell
-timestamper import_photos --library=/Users/<yourname>/Pictures/Photos Library.photoslibrary
+timestamper import_photos --library=/path/to/Photos Library.photoslibrary
 ```
 2. Get the Sha256 hash of each of those photos. This is the longest running step. I thought I'd have to parallelize it, but it really wasn't slow enough to warrant it for my library.
 ```shell
@@ -34,30 +30,23 @@ timestamper hashify
 timestamper build_and_verify_merkle
 ```
 4. Send the merkle root to Bitcoin. If you're doing it the slow way, let's do this in a few steps.
-4a. For starters, a dryrun to the testnet. And again, you'll be prompted for your private key.
-```shell
-timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> \
-    --dryrun \
-    --testnet
-```
-4b. Now let's do a live run to the testnet
-```shell
-timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> \
-    --live \
-    --testnet
-```
-4c. Dry run to mainnet. Don't forget to use mainnet addresses
-```shell
-timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> \
-    --dryrun \
-    --mainnet
-```
-4d. Do it live!
-```shell
-timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> \
-    --live \
-    --mainnet
-```
+
+   4a. For starters, a dryrun to the testnet. And again, you'll be prompted for your private key.
+   ```shell
+   timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> --dryrun --testnet
+   ```
+   4b. Now let's do a live run to the testnet
+   ```shell
+   timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> --live --testnet
+   ```
+   4c. Dry run to mainnet. Don't forget to use mainnet addresses
+   ```shell
+   timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> --dryrun --mainnet
+   ```
+   4d. Do it live!
+   ```shell
+   timestamper send_merkle_root_to_bitcoin --change_address=<an address you control> --live --mainnet
+   ```
 
 
 check your work in a python shell
