@@ -65,7 +65,6 @@ def hashify(file_of_paths, file_of_hashes):
     click.echo(f"processed: {count_of_proccessed_files}, couldn't find: {count_of_missing_files}")
 
 
-
 def lookup_random_photo_filepath(ctx, param, value):
     if value is None:
         all_paths = open(FILE_PATH_OF_FILE_PATHS).read().splitlines()
