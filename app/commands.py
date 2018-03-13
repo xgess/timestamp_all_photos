@@ -1,6 +1,7 @@
 from hashlib import sha256
 import os
 import random
+import subprocess
 
 import click
 
@@ -13,6 +14,8 @@ from .transmit import send_to_bitcoin
 TMP_DIRECTORY = os.path.join(os.path.dirname(__file__), '..', 'tmp')
 FILE_PATH_OF_FILE_PATHS = os.path.join(TMP_DIRECTORY, 'file_paths_to_hashify.txt')
 FILE_PATH_OF_HASHES = os.path.join(TMP_DIRECTORY, 'hashes.dat')
+CURRENT_USERNAME = subprocess.check_output(['whoami']).decode().rstrip()
+DEFAULT_LIBRARY_PATH = f'/Users/{CURRENT_USERNAME}/Pictures/Photos Library.photoslibrary/'
 LIMIT = 500
 
 
@@ -39,7 +42,7 @@ def cli():
 @click.command()
 @click.option('--library',
     type=click.Path(exists=True),
-    default='/Users/me/Pictures/Photos Library.photoslibrary/',
+    default=DEFAULT_LIBRARY_PATH,
     help='path to photos library object'
 )
 def import_photos(library):
@@ -123,7 +126,7 @@ def send_merkle_root_to_bitcoin(file_of_hashes, wif, change_address, is_testnet,
 @transmission_options
 @click.option('--library',
     type=click.Path(exists=True),
-    default='/Users/me/Pictures/Photos Library.photoslibrary/',
+    default=DEFAULT_LIBRARY_PATH,
     help='path to photos library object'
 )
 @click.pass_context
