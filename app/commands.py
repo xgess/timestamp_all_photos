@@ -16,7 +16,7 @@ FILE_PATH_OF_FILE_PATHS = os.path.join(TMP_DIRECTORY, 'file_paths_to_hashify.txt
 FILE_PATH_OF_HASHES = os.path.join(TMP_DIRECTORY, 'hashes.dat')
 CURRENT_USERNAME = subprocess.check_output(['whoami']).decode().rstrip()
 DEFAULT_LIBRARY_PATH = f'/Users/{CURRENT_USERNAME}/Pictures/Photos Library.photoslibrary/'
-LIMIT = 500
+LIMIT = None
 
 
 _transmission_options = [
