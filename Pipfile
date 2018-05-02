@@ -9,6 +9,7 @@ name = "pypi"
 
 click = "*"
 btctxstore = {git = "git@github.com:xgess/btctxstore.git", editable = true, ref = "pin-pycoin"}
+"e1839a8" = {path = ".", editable = true}
 
 
 [dev-packages]
