@@ -21,7 +21,7 @@ You can also do it in a few steps to watch the process and inspect the temporary
 ```shell
 timestamper import_photos --library=/path/to/Photos Library.photoslibrary
 ```
-2. Get the Sha256 hash of each of those photos. This is the longest running step. I thought I'd have to parallelize it, but it really wasn't slow enough to warrant it for my library.
+2. Get the Sha256 hash of each of those photos. This is the longest running step. It's parallelized to use all of the available cores. 
 ```shell
 timestamper hashify
 ```
