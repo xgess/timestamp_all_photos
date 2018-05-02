@@ -7,6 +7,7 @@ build-test:
 
 build:
 	@pipenv install
+	@pipenv shell
 
 clean: ## Remove artifacts
 	@find . -name "*.pyc" -delete
